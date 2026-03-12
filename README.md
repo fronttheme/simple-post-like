@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# simple-post-like
-Add simple, intuitive reactions to your posts
-=======
 <div align="center">
   <img src="https://www.fronttheme.com/wp-content/uploads/2026/03/simple-post-like-cover.webp" alt="Simple Post Like - Cover" />
   <h1>Simple Post Like</h1>
@@ -17,6 +13,11 @@ Add simple, intuitive reactions to your posts
 [Documentation](https://www.fronttheme.com/docs/simple-post-like/) ·
 [Report a Bug](https://github.com/fronttheme/simple-post-like/issues) ·
 [Request a Feature](https://github.com/fronttheme/simple-post-like/issues)
+
+<br>
+
+[![Full Documentation](https://img.shields.io/badge/Full%20Documentation-%20fronttheme.com-6f42c1?style=for-the-badge&logo=wordpress&logoColor=white)](https://www.fronttheme.com/docs/simple-post-like/)
+
 </div>
 
 ---
@@ -238,4 +239,3 @@ Free for personal and commercial use. No license keys. No upsells.
 <div align="center">
   <sub>Built by <a href="https://www.fronttheme.com">FrontTheme</a> · <a href="https://www.farukdesign.com">Faruk Ahmed</a></sub>
 </div>
->>>>>>> b2ec606 (Initial release — Simple Post Like v1.0.0)
