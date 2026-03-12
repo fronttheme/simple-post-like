@@ -1,0 +1,11 @@
+// =============================================================================
+// Frontend — CSS Custom Properties
+// Declared here so :root outputs before other rules in the compiled CSS.
+// Override these in your theme to customise the button appearance.
+// =============================================================================
+
+@use '../variables' as *;
+
+:root {
+  @include spl-css-vars-frontend;
+}

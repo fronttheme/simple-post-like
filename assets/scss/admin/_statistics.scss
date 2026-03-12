@@ -1,0 +1,178 @@
+// =============================================================================
+// Admin — Statistics Tab
+// Stat cards, most-liked table, rank badges, like pills, post type badges.
+// =============================================================================
+
+@use '../variables' as *;
+@use 'sass:list';
+
+// ── Summary Cards ─────────────────────────────────────────────────────────────
+.spl-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.spl-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: $spl-surface;
+  border-radius: $spl-radius-md;
+
+  &__icon {
+    font-size: 26px;
+    width: 26px;
+    height: 26px;
+    color: $spl-color;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__number {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    color: $spl-text;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: $spl-text-muted;
+  }
+}
+
+.spl-stat-card--likes {
+  .spl-stat-card__icon {
+    color: rgba($spl-color, 1);
+  }
+}
+
+.spl-stat-card--posts {
+  .spl-stat-card__icon {
+    color: rgba($spl-color-green, 1);
+  }
+}
+
+.spl-stat-card--most {
+  .spl-stat-card__icon {
+    color: rgba($spl-color-purple, 1);
+  }
+}
+
+.spl-col-rank { width: 48px; text-align: center !important; }
+
+.spl-col-likes { width: 90px; }
+
+.spl-col-actions {
+  width: 70px;
+  display: flex;
+  gap: 6px;
+
+  a {
+    color: $spl-text-muted;
+    text-decoration: none;
+    transition: color var(--spl-transition);
+
+    &:hover {
+      color: $spl-color;
+    }
+  }
+
+  .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// ── Rank Badge ────────────────────────────────────────────────────────────────
+.spl-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  background: $spl-bg;
+  color: $spl-text-muted;
+  border: 1px solid $spl-border;
+
+  // Generate gold / silver / bronze variants from the $spl-ranks map.
+  @each $name, $values in $spl-ranks {
+    $color: list.nth($values, 1);
+    $bg: list.nth($values, 2);
+
+    &--#{$name} {
+      background: $bg;
+      color: $color;
+      border-color: $color;
+    }
+  }
+}
+
+// ── Like Count Pill ───────────────────────────────────────────────────────────
+.spl-like-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px 3px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $spl-color;
+  background: $spl-bg;
+  border-radius: $spl-radius-pill;
+
+  .dashicons {
+    font-size: 13px;
+    width: 13px;
+    height: 13px;
+  }
+}
+
+// ── Post Type Badge ───────────────────────────────────────────────────────────
+.spl-pt-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: $spl-text-muted;
+  background: $spl-bg;
+  border: 1px solid $spl-border;
+  border-radius: $spl-radius-pill;
+}
+
+// ── Posts List Column ─────────────────────────────────────────────────────────
+.spl-col-icon { color: $spl-color; }
+
+.spl-col-count { font-weight: 600; color: $spl-text; }
+
+// ── Empty State ───────────────────────────────────────────────────────────────
+.spl-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: $spl-text-muted;
+
+  &__icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    color: $spl-color;
+    display: block;
+    margin: 0 auto 12px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}

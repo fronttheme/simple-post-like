@@ -1,0 +1,31 @@
+{
+  "name": "fronttheme/simple-post-like",
+  "description": "Add simple, intuitive reactions to your posts.",
+  "type": "wordpress-plugin",
+  "version": "1.0.0",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Faruk Ahmed",
+      "email": "farukahmedinbox@gmail.com",
+      "homepage": "https://www.farukdesign.com"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "post-likes",
+    "reactions"
+  ],
+  "require": {
+    "php": ">=8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "FrontTheme\\SimplePostLike\\": "includes/classes/",
+      "FrontTheme\\SimplePostLike\\Traits\\": "includes/traits/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

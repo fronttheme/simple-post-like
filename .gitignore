@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+vendor/
+README/
+
+# Compiled CSS (committed to git so users can install without npm)
+# assets/css/      ← intentionally NOT ignored
+
+# Source maps (dev only)
+assets/css/*.map
+
+# Release artifacts
+*.zip
+*-packaged/
+
+# OS junk
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.code-workspace

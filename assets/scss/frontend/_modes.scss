@@ -1,0 +1,60 @@
+// =============================================================================
+// Frontend — Display Mode Variants
+// button_default | icon_counter | icon_only
+// =============================================================================
+
+@use "./../variables" as *;
+
+// ── button_default ────────────────────────────────────────────────────────────
+.simple-post-like-button.button_default {
+  .like-count-holder {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+
+  .like-count {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--spl-btn-text);
+    line-height: 1;
+  }
+
+  .like-count-text {
+    font-size: 12px;
+    color: var(--spl-count-color);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ── icon_counter ─────────────────────────────────────────────────────────────
+.simple-post-like-button.icon_counter {
+  gap: 8px;
+
+  .like-btn {
+    padding: 7px 10px;
+    border-radius: var(--spl-btn-radius-pill);
+  }
+
+  .like-count {
+    font-size: var(--spl-count-size);
+    font-weight: 600;
+    color: var(--spl-count-color);
+    min-width: 16px;
+  }
+}
+
+// ── icon_only ────────────────────────────────────────────────────────────────
+.simple-post-like-button.icon_only {
+  .like-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .like-count {
+    display: none;
+  }
+}

@@ -1,0 +1,8 @@
+@use '../variables' as *;
+
+.wrap.spl-wrap {
+  code {
+    font-family: $font-mono;
+    font-weight: 500;
+  }
+}

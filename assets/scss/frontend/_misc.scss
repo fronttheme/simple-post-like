@@ -1,0 +1,18 @@
+// =============================================================================
+// Frontend — Animation & Auto-inject Wrapper
+// =============================================================================
+
+@use "./../variables" as *;
+
+// ── Pulse keyframes ───────────────────────────────────────────────────────────
+@keyframes spl-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.35); }
+}
+
+// ── Auto-inject wrapper ───────────────────────────────────────────────────────
+.spl-auto-inject {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid $spl-border;
+}

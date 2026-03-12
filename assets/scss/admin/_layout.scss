@@ -1,0 +1,178 @@
+// =============================================================================
+// Admin — Layout, Header, Tabs
+// =============================================================================
+
+@use "../variables" as *;
+
+// ── Wrap ──────────────────────────────────────────────────────────────────────
+.spl-wrap {
+  max-width: 900px;
+  margin-top: 24px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.spl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    p {
+      color: $spl-text-muted;
+    }
+  }
+
+  &__logo {
+    margin-right: 10px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      height: 32px;
+      width: auto;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      font-weight: 500;
+    }
+  }
+
+  &__icon {
+    color: var(--spl-accent);
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--spl-text);
+    line-height: 1;
+    border: none;
+  }
+
+  &__version {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: $spl-color-teal;
+    background: rgba($spl-color-teal, 0.1);
+    border: 1px solid rgba($spl-color-teal, 0.2);
+    border-radius: var(--spl-radius-pill);
+    vertical-align: middle;
+  }
+
+  &__link {
+    color: $spl-text;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    .spl-icon-external {
+      flex-shrink: 0;
+      transition: transform $spl-transition;
+
+      path {
+        stroke: $spl-color;
+      }
+    }
+
+    &:hover .spl-icon-external {
+      transform: translate(2px, -2px); // nudges up-right on hover
+    }
+
+    &:hover {
+      color: $spl-color-hover;
+    }
+  }
+}
+
+// ── Tab Navigation ────────────────────────────────────────────────────────────
+.spl-tabs {
+  display: flex;
+  gap: 2px;
+  margin: 20px 0 0;
+  padding: 0;
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    background: $spl-bg-light;
+    color: $spl-text-muted;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: var(--spl-radius-sm) var(--spl-radius-sm) 0 0;
+    transition: color var(--spl-transition), background var(--spl-transition);
+    position: relative;
+    bottom: -1px;
+
+    .dashicons {
+      font-size: 15px;
+      width: 15px;
+      height: 15px;
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $spl-text;
+      background: $spl-bg;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+    }
+
+    &.is-active {
+      color: var(--spl-text);
+      background: $spl-bg;
+      border-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+// ── Tab Content ───────────────────────────────────────────────────────────────
+.spl-tab-content {
+  background: $spl-bg;
+  border-radius: 0 $spl-radius-lg $spl-radius-lg $spl-radius-lg;
+  padding: 24px;
+  position: relative;
+  top: 0;
+}
+
+// Table
+.spl-form-table,
+.spl-stats-table {
+  p,
+  td {
+    color: var(--spl-text);
+  }
+
+  p {
+    margin-top: 15px !important;
+  }
+}

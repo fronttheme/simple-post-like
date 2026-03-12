@@ -1,0 +1,18 @@
+// =============================================================================
+// Simple Post Like — Admin Entry
+// Compiled to: assets/css/admin.css
+// =============================================================================
+
+// CSS custom properties
+@use 'admin/root';
+
+// Partials
+@use 'admin/button-admin';
+@use 'admin/typography';
+@use 'admin/footer';
+@use 'admin/layout';
+@use 'admin/sections';
+@use 'admin/controls';
+@use 'admin/statistics';
+@use 'admin/post-list';
+@use 'admin/checkbox';

@@ -1,0 +1,12 @@
+// =============================================================================
+// Simple Post Like — Frontend Entry
+// Compiled to: assets/css/simple-post-like.css
+// =============================================================================
+
+// CSS custom properties — overridable by themes
+@use 'frontend/root';
+
+// Partials
+@use 'frontend/button';
+@use 'frontend/modes';
+@use 'frontend/misc';

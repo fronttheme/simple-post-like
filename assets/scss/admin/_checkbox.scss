@@ -1,0 +1,70 @@
+/* Checkbox Style - Only the input */
+
+@use "../variables" as *;
+
+.spl-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px !important;
+  height: 18px !important;
+  border: 2px solid var(--spl-accent-light) !important;
+  box-shadow: none !important;
+  border-radius: 4px;
+  background: #fff !important;
+  margin: 0 8px 0 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+/* Hover state */
+.spl-checkbox:hover {
+  border-color: var(--spl-accent);
+  background: var(--spl-accent-light) !important;
+}
+
+/* Checked state */
+.spl-checkbox:checked {
+  background: var(--spl-accent) !important;
+  background: linear-gradient(45deg, $spl-color, $spl-neutral-500) !important;
+  border-color: var(--spl-accent) !important;
+  border: 0 !important;
+}
+
+/* Checkmark */
+.spl-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.spl-checkbox:checked::before {
+  content: '' !important;
+}
+
+/* Focus state for accessibility */
+.spl-checkbox:focus:not(:checked) {
+  outline: none;
+  border-color: var(--spl-accent-light) !important;
+  box-shadow: none !important;
+}
+
+/* Disabled state */
+.spl-checkbox:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--spl-accent-light);
+  border-color: var(--spl-accent-light);
+}
+
+.spl-checkbox:disabled:checked {
+  background: var(--spl-accent-light);
+  border-color: var(--spl-accent-light);
+}

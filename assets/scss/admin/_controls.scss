@@ -1,0 +1,215 @@
+// =============================================================================
+// Admin — Form Controls
+// Radio cards, radio pills, checkboxes, toggles, shortcode reference.
+// =============================================================================
+
+@use "../variables" as *;
+
+// ── Radio Group (shared wrapper) ──────────────────────────────────────────────
+.spl-radio-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  &--pills {
+    gap: 6px;
+  }
+}
+
+// ── Radio Cards ───────────────────────────────────────────────────────────────
+.spl-radio-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  min-width: 130px;
+  background: $spl-bg;
+  border: 1px solid $spl-border;
+  border-radius: var(--spl-radius-sm);
+  cursor: pointer;
+  transition: border-color var(--spl-transition),
+  background var(--spl-transition);
+  position: relative;
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &:hover,
+  &.is-selected {
+    border-color: transparent;
+    background: var(--spl-accent);
+
+    .spl-radio-card__desc,
+    .spl-radio-card__label {
+      color: #fff;
+    }
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--spl-text);
+  }
+
+  &__desc {
+    font-size: 11px;
+    color: var(--spl-text-muted);
+  }
+}
+
+// ── Radio Pills ───────────────────────────────────────────────────────────────
+.spl-radio-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--spl-text-muted);
+  border: 1px solid var(--spl-border);
+  border-radius: var(--spl-radius-pill);
+  cursor: pointer;
+  transition: all var(--spl-transition);
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    color: var(--spl-accent);
+    border-color: var(--spl-accent);
+    background: #fff;
+  }
+
+  &.is-selected {
+    color: var(--spl-surface);
+    background: var(--spl-accent);
+    border-color: var(--spl-accent);
+  }
+}
+
+// ── Checkboxes ────────────────────────────────────────────────────────────────
+.spl-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spl-checkbox-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: max-content;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    margin: 0;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: var(--spl-text);
+  }
+
+  &__slug {
+    padding: 1px 6px;
+    font-size: 11px;
+    background: var(--spl-bg);
+    border: 1px solid var(--spl-border);
+    border-radius: var(--spl-radius-sm);
+    color: var(--spl-text-muted);
+  }
+}
+
+// ── Toggle Switch ────────────────────────────────────────────────────────────
+.spl-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__slider {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    background: var(--spl-border);
+    border-radius: var(--spl-radius-pill);
+    transition: background var(--spl-transition);
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      background: var(--spl-surface);
+      border-radius: 50%;
+      transition: transform var(--spl-transition);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  input:checked ~ .spl-toggle__slider {
+    background: var(--spl-accent);
+
+    &::after {
+      transform: translateX(18px);
+    }
+  }
+
+  input:focus-visible ~ .spl-toggle__slider {
+    outline: 2px solid var(--spl-border-focus);
+    outline-offset: 2px;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: var(--spl-text-muted);
+  }
+}
+
+// ── Shortcode Reference ───────────────────────────────────────────────────────
+.spl-shortcodes {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 20px;
+}
+
+.spl-shortcode {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  code {
+    padding: 5px 10px;
+    font-size: 12px;
+    background: $spl-bg;
+    border: 1px solid $spl-border;
+    border-radius: $spl-radius-xs;
+    color: $spl-text-muted;
+    white-space: nowrap;
+  }
+
+  span {
+    font-size: 12px;
+    color: var(--spl-text-muted);
+  }
+}

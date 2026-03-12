@@ -1,0 +1,136 @@
+@use 'sass:color';
+@use 'sass:list';
+
+// =============================================================================
+// Simple Post Like — Shared Variables
+// =============================================================================
+
+// Brand
+$spl-color: #ec1c76;
+$spl-color-green: #06a67e;
+$spl-color-purple: #7221d9;
+$spl-color-blue: #2157cc;
+$spl-color-teal: #21afd9;
+$spl-color-light: color.adjust($spl-color, $lightness: 42%);
+$spl-color-hover: color.adjust($spl-color, $lightness: -8%);
+
+// Neutral (purple-tinted grays — high contrast)
+$spl-neutral-50:  #fbf9fe;
+$spl-neutral-100: #f0eafa;
+$spl-neutral-200: #ddd2f4;
+$spl-neutral-300: #c2b0e8;
+$spl-neutral-400: #9b7dd4;
+$spl-neutral-500: #7450b8;
+$spl-neutral-600: #553392;
+$spl-neutral-700: #3b2070;
+$spl-neutral-800: #22114d;
+$spl-neutral-900: #0e0620;
+
+// Text
+$spl-text: $spl-neutral-600;
+$spl-text-muted: $spl-neutral-500;
+$spl-text-light: $spl-neutral-100;
+$spl-text-accent: $spl-color;
+
+$spl-bg: $spl-neutral-100;
+$spl-bg-light: $spl-neutral-200;
+$spl-surface: #ffffff;
+$spl-border: $spl-neutral-300;
+$spl-border-focus: $spl-color;
+
+// Radius
+$spl-radius-xs: 4px;
+$spl-radius-sm: 8px;
+$spl-radius-md: 12px;
+$spl-radius-lg: 16px;
+$spl-radius-xl: 20px;
+$spl-radius-pill: 100px;
+
+// Shadows
+$spl-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+$spl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+// Motion
+$spl-transition: 0.18s ease;
+
+// Typography
+$spl-font-size: 13px;
+
+// Rank colors
+$spl-gold: #f59e0b;
+$spl-silver: #9ca3af;
+$spl-bronze: #cd7c3a;
+
+// Rank map — used in @each loop
+$spl-ranks: (
+    'gold': ($spl-gold, #fef3c7),
+    'silver': ($spl-silver, #f3f4f6),
+    'bronze': ($spl-bronze, #fdf0e6),
+);
+
+// Typography
+$font-primary: "Bricolage Grotesque", 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-heading: "Bricolage Grotesque", 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono: 'Jetbrains Mono', 'Fira Code', 'Courier New', monospace;
+
+// -----------------------------------------------------------------------------
+// CSS Custom Properties (runtime — overridable by themes)
+// Declared in :root, available in the browser.
+// Frontend properties are prefixed --spl-btn-* for scoping.
+// -----------------------------------------------------------------------------
+
+@mixin spl-css-vars-admin {
+  --spl-accent: #{$spl-color};
+  --spl-accent-light: #{$spl-color-light};
+  --spl-accent-hover: #{$spl-color-hover};
+
+  --spl-text: #{$spl-text};
+  --spl-text-muted: #{$spl-text-muted};
+  --spl-text-light: #{$spl-text-light};
+
+  --spl-bg: #{$spl-bg};
+  --spl-surface: #{$spl-surface};
+  --spl-border: #{$spl-border};
+  --spl-border-focus: #{$spl-border-focus};
+
+  --spl-radius-xs: #{$spl-radius-xs};
+  --spl-radius-sm: #{$spl-radius-sm};
+  --spl-radius-md: #{$spl-radius-md};
+  --spl-radius-lg: #{$spl-radius-lg};
+  --spl-radius-xl: #{$spl-radius-xl};
+  --spl-radius-pill: #{$spl-radius-pill};
+
+  --spl-shadow: #{$spl-shadow};
+  --spl-shadow-md: #{$spl-shadow-md};
+
+  --spl-transition: #{$spl-transition};
+
+  --spl-gold: #{$spl-gold};
+  --spl-silver: #{$spl-silver};
+  --spl-bronze: #{$spl-bronze};
+}
+
+@mixin spl-css-vars-frontend {
+  --spl-color: #{$spl-color};
+  --spl-color-light: #{$spl-color-light};
+  --spl-color-hover: #{$spl-color-hover};
+
+  --spl-btn-bg: #{$spl-surface};
+  --spl-btn-bg-hover: #fff5f6;
+  --spl-btn-bg-liked: #{$spl-color-light};
+
+  --spl-btn-border: #{$spl-border};
+  --spl-btn-border-liked: #{$spl-color};
+
+  --spl-btn-text: #{$spl-text};
+  --spl-btn-text-liked: #{$spl-color};
+
+  --spl-btn-radius: #{$spl-radius-sm};
+  --spl-btn-radius-pill: #{$spl-radius-pill};
+
+  --spl-count-color: #{$spl-text-muted};
+  --spl-count-size: 15px;
+
+  --spl-transition: 0.2s ease;
+  --spl-font-size: #{$spl-font-size};
+}

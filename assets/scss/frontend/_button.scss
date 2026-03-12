@@ -1,0 +1,98 @@
+// =============================================================================
+// Frontend — Button
+// =============================================================================
+
+@use '../variables' as *;
+@use 'sass:color';
+
+.simple-post-like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  line-height: 1;
+
+  // ── Like Button Base ───────────────────────────────────────────────────────
+  .like-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 14px;
+    font-size: var(--spl-font-size);
+    font-weight: 500;
+    color: var(--spl-btn-text);
+    background: var(--spl-btn-bg);
+    border: 1px solid var(--spl-btn-border);
+    border-radius: var(--spl-btn-radius);
+    cursor: pointer;
+    transition: color var(--spl-transition),
+    background var(--spl-transition),
+    border-color var(--spl-transition),
+    transform var(--spl-transition),
+    box-shadow var(--spl-transition);
+    outline: none;
+    user-select: none;
+    line-height: 1;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--spl-color);
+      background: var(--spl-btn-bg-hover);
+      border-color: var(--spl-color);
+      box-shadow: 0 2px 8px rgba($spl-color, 0.12);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--spl-color);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  // ── Liked State ────────────────────────────────────────────────────────────
+  &.post-liked {
+    .like-btn {
+      color: var(--spl-btn-text-liked);
+      background: var(--spl-btn-bg-liked);
+      border-color: var(--spl-btn-border-liked);
+
+      &:hover {
+        background: color.adjust($spl-color-light, $lightness: -4%);
+        box-shadow: 0 2px 8px rgba($spl-color, 0.15);
+      }
+    }
+  }
+
+  // ── Button Content & Icon ──────────────────────────────────────────────────
+  .button-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    pointer-events: none;
+  }
+
+  .like-btn i {
+    font-size: 14px;
+    line-height: 1;
+    transition: transform var(--spl-transition);
+  }
+
+  &.post-liked .like-btn i {
+    color: var(--spl-color);
+  }
+
+  // ── Pulse Animation (AJAX in-flight) ───────────────────────────────────────
+  .like-btn.spl-animating i {
+    animation: spl-pulse 0.55s ease-in-out infinite;
+  }
+}

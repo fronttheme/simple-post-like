@@ -1,0 +1,160 @@
+@use '../variables' as *;
+@use 'sass:color';
+@use 'sass:list';
+
+// Shared column widths — single source of truth
+$col-rank: 44px;
+$col-type: 80px;
+$col-likes: 70px;
+$col-actions: 72px;
+
+.spl-post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid $spl-border;
+  border-radius: 0 0 $spl-radius-md $spl-radius-md;
+  overflow: hidden;
+  box-shadow: $spl-shadow;
+  background: $spl-surface;
+  font-size: $spl-font-size;
+
+  // ── Shared row layout ──────────────────────────────────
+  &__header,
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+
+    // Column widths
+    .spl-col-rank { width: $col-rank; flex-shrink: 0; text-align: center; }
+
+    .spl-col-title { flex: 1; min-width: 0; }
+
+    // flex: 1 fills remaining space
+    .spl-col-type { width: $col-type; flex-shrink: 0; }
+
+    .spl-col-likes { width: $col-likes; flex-shrink: 0; text-align: center; }
+
+    .spl-col-actions { width: $col-actions; flex-shrink: 0; text-align: right; }
+  }
+
+  // ── Header row ─────────────────────────────────────────
+  &__header {
+    height: 38px;
+    background: $spl-bg;
+    border-bottom: 1px solid $spl-border;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $spl-text-muted;
+  }
+
+  // ── Data rows ──────────────────────────────────────────
+  &__item {
+    height: 52px;
+    color: $spl-text;
+    transition: background $spl-transition;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $spl-border;
+    }
+
+    // Truncate long titles
+    .spl-col-title strong {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+      color: $spl-text;
+    }
+  }
+}
+
+// ── Rank badge ────────────────────────────────────────────
+.spl-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: $spl-radius-pill;
+  font-size: 11px;
+  font-weight: 700;
+  color: $spl-text-muted;
+  background: $spl-bg;
+
+  @each $name, $values in $spl-ranks {
+    &--#{$name} {
+      color: list.nth($values, 1);
+      background: list.nth($values, 2);
+    }
+  }
+}
+
+// ── Post type badge ───────────────────────────────────────
+.spl-pt-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: $spl-radius-pill;
+  background: $spl-bg;
+  border: 1px solid $spl-border;
+  color: $spl-text-muted;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+// ── Likes pill ────────────────────────────────────────────
+.spl-like-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: $spl-radius-pill;
+  background: color.adjust($spl-color, $lightness: 44%);
+  color: $spl-color;
+  font-weight: 600;
+  font-size: 12px;
+
+  .dashicons-heart {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+// ── Action buttons ────────────────────────────────────────
+.spl-col-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: $spl-radius-sm;
+    color: $spl-text-muted;
+    text-decoration: none;
+    transition: background $spl-transition, color $spl-transition;
+
+    &:hover {
+      background: $spl-bg;
+      color: $spl-color;
+    }
+
+    .dashicons {
+      font-size: 15px;
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

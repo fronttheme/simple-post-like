@@ -1,0 +1,24 @@
+{
+  "name": "simple-post-like",
+  "version": "1.0.0",
+  "description": "Add simple, intuitive reactions to your posts.",
+  "author": "Faruk Ahmed <farukahmedinbox@gmail.com> (https://www.farukdesign.com)",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "scripts": {
+    "clean": "rm -f assets/css/*.map",
+    "dev": "sass assets/scss:assets/css --watch --style=expanded --source-map",
+    "build": "npm run clean && sass assets/scss:assets/css --style=compressed --no-source-map",
+    "pot": "wp i18n make-pot . languages/simple-post-like.pot --domain=simple-post-like",
+    "package": "npm run build && npm run pot && composer install --no-dev --optimize-autoloader && rm -rf ../simple-post-like-packaged && rm -f ../simple-post-like.zip && rsync -av --exclude-from='.distignore' . ../simple-post-like-packaged && cd .. && zip -r simple-post-like.zip simple-post-like-packaged && echo '✅ simple-post-like.zip ready for release!'"
+  },
+  "keywords": [
+    "wordpress",
+    "post-likes",
+    "reactions",
+    "wordpress-plugin"
+  ],
+  "devDependencies": {
+    "sass": "^1.94.2"
+  }
+}

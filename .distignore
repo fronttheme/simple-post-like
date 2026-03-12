@@ -1,0 +1,44 @@
+# Simple Post Like Distribution Ignore
+# Files and folders excluded from the release ZIP (npm run package)
+
+# Source files
+src/
+assets/scss/
+
+# Build tooling
+node_modules/
+package.json
+package-lock.json
+vite.config.js
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+.distignore
+
+# GitHub specific
+.github/
+
+# Development & IDE files
+.DS_Store
+*.DS_Store
+.idea/
+.vscode/
+*.log
+*.cache
+
+# Documentation (WordPress uses readme.txt, not .md files)
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+SECURITY.md
+
+# Screenshots
+screenshots/
+
+# SVN
+simple-post-like-svn/
+
+# Author Kit
+README/

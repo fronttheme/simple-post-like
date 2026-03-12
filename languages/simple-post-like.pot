@@ -1,0 +1,292 @@
+# Copyright (C) 2026 FrontTheme
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Post Like 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-post-like\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-12T20:30:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: simple-post-like\n"
+
+#. Plugin Name of the plugin
+#: simple-post-like.php
+#: includes/classes/Admin.php:30
+#: includes/classes/Admin.php:31
+#: includes/classes/Admin.php:113
+msgid "Simple Post Like"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: simple-post-like.php
+msgid "https://www.fronttheme.com/products/simple-post-like"
+msgstr ""
+
+#. Description of the plugin
+#: simple-post-like.php
+#: includes/classes/Admin.php:117
+msgid "Add simple, intuitive reactions to your posts."
+msgstr ""
+
+#. Author of the plugin
+#: simple-post-like.php
+msgid "FrontTheme"
+msgstr ""
+
+#. Author URI of the plugin
+#: simple-post-like.php
+msgid "https://www.fronttheme.com"
+msgstr ""
+
+#: includes/classes/Admin.php:67
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: includes/classes/Admin.php:110
+msgid "Simple Post Like Logo"
+msgstr ""
+
+#: includes/classes/Admin.php:122
+msgid "Documentation"
+msgstr ""
+
+#: includes/classes/Admin.php:132
+msgid "Plugin sections"
+msgstr ""
+
+#: includes/classes/Admin.php:139
+msgid "Settings"
+msgstr ""
+
+#: includes/classes/Admin.php:147
+msgid "Statistics"
+msgstr ""
+
+#: includes/classes/Admin.php:195
+msgid "Settings saved successfully."
+msgstr ""
+
+#: includes/classes/Admin.php:206
+#: includes/classes/Admin.php:222
+msgid "Button"
+msgstr ""
+
+#: includes/classes/Admin.php:208
+msgid "Control how the like button looks and who can use it."
+msgstr ""
+
+#: includes/classes/Admin.php:216
+msgid "Display Style"
+msgstr ""
+
+#: includes/classes/Admin.php:223
+msgid "Icon + label + count"
+msgstr ""
+
+#: includes/classes/Admin.php:226
+msgid "Icon + Counter"
+msgstr ""
+
+#: includes/classes/Admin.php:227
+msgid "Icon with number beside it"
+msgstr ""
+
+#: includes/classes/Admin.php:230
+msgid "Icon Only"
+msgstr ""
+
+#: includes/classes/Admin.php:231
+msgid "Just the heart icon"
+msgstr ""
+
+#: includes/classes/Admin.php:249
+msgid "Enable on Post Types"
+msgstr ""
+
+#: includes/classes/Admin.php:263
+msgid "Choose which post types display the like button."
+msgstr ""
+
+#: includes/classes/Admin.php:271
+msgid "Allow Guest Likes"
+msgstr ""
+
+#: includes/classes/Admin.php:279
+msgid "Allow non-logged-in visitors to like posts (tracked by hashed IP)."
+msgstr ""
+
+#: includes/classes/Admin.php:291
+msgid "Auto Injection"
+msgstr ""
+
+#: includes/classes/Admin.php:293
+msgid "Control where the like button appears automatically. Disable the master toggle to switch to shortcode-only mode."
+msgstr ""
+
+#: includes/classes/Admin.php:302
+msgid "Enable Auto Injection"
+msgstr ""
+
+#: includes/classes/Admin.php:310
+msgid "Automatically output the like button without editing templates."
+msgstr ""
+
+#: includes/classes/Admin.php:318
+msgid "Single Post Position"
+msgstr ""
+
+#: includes/classes/Admin.php:323
+msgid "After content"
+msgstr ""
+
+#: includes/classes/Admin.php:324
+msgid "Before content"
+msgstr ""
+
+#: includes/classes/Admin.php:325
+msgid "Before &amp; after"
+msgstr ""
+
+#: includes/classes/Admin.php:326
+msgid "Do not inject"
+msgstr ""
+
+#: includes/classes/Admin.php:338
+msgid "Where to place the button on individual post pages."
+msgstr ""
+
+#: includes/classes/Admin.php:346
+msgid "Inject on Archive Pages"
+msgstr ""
+
+#: includes/classes/Admin.php:354
+msgid "Show after each post on archive, category, tag, and blog index pages."
+msgstr ""
+
+#: includes/classes/Admin.php:366
+msgid "Shortcode"
+msgstr ""
+
+#: includes/classes/Admin.php:367
+msgid "Place the like button anywhere manually."
+msgstr ""
+
+#: includes/classes/Admin.php:372
+msgid "Current post, default style"
+msgstr ""
+
+#: includes/classes/Admin.php:376
+msgid "Specific post by ID"
+msgstr ""
+
+#: includes/classes/Admin.php:380
+msgid "Override display style"
+msgstr ""
+
+#: includes/classes/Admin.php:388
+msgid "Save Settings"
+msgstr ""
+
+#: includes/classes/Admin.php:422
+msgid "Total Likes"
+msgstr ""
+
+#: includes/classes/Admin.php:430
+msgid "Posts with Likes"
+msgstr ""
+
+#: includes/classes/Admin.php:442
+msgid "Most Liked Post"
+msgstr ""
+
+#: includes/classes/Admin.php:451
+msgid "Most Liked Posts"
+msgstr ""
+
+#: includes/classes/Admin.php:452
+msgid "Top 10 posts ranked by like count."
+msgstr ""
+
+#: includes/classes/Admin.php:458
+msgid "No likes yet. Share your posts to get started!"
+msgstr ""
+
+#: includes/classes/Admin.php:465
+msgid "#"
+msgstr ""
+
+#: includes/classes/Admin.php:466
+msgid "Post Title"
+msgstr ""
+
+#: includes/classes/Admin.php:467
+msgid "Type"
+msgstr ""
+
+#: includes/classes/Admin.php:468
+#: includes/classes/LikeButton.php:32
+#: includes/classes/Stats.php:53
+#: includes/classes/Stats.php:54
+msgid "Likes"
+msgstr ""
+
+#: includes/classes/Admin.php:469
+msgid "Actions"
+msgstr ""
+
+#: includes/classes/Admin.php:489
+msgid "(no title)"
+msgstr ""
+
+#: includes/classes/Admin.php:506
+msgid "View post"
+msgstr ""
+
+#: includes/classes/Admin.php:510
+msgid "Edit post"
+msgstr ""
+
+#: includes/classes/AjaxHandler.php:23
+msgid "Invalid post."
+msgstr ""
+
+#: includes/classes/AjaxHandler.php:28
+msgid "You must be logged in to like posts."
+msgstr ""
+
+#: includes/classes/Assets.php:49
+#: includes/classes/LikeButton.php:29
+#: includes/classes/LikeButton.php:31
+msgid "Like"
+msgstr ""
+
+#: includes/classes/Assets.php:50
+#: includes/classes/Assets.php:52
+#: includes/classes/LikeButton.php:28
+msgid "Unlike"
+msgstr ""
+
+#: includes/classes/Assets.php:51
+msgid "I like this"
+msgstr ""
+
+#: includes/classes/Assets.php:53
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#. translators: %1$s: Required PHP version, %2$s: Current PHP version
+#: includes/classes/Install.php:144
+#, php-format
+msgid "SimplePostLike requires PHP version %1$s or higher. You are running version %2$s."
+msgstr ""
+
+#. translators: %1$s: Required WordPress version, %2$s: Current WordPress version
+#: includes/classes/Install.php:157
+#, php-format
+msgid "SimplePostLike requires WordPress version %1$s or higher. You are running version %2$s."
+msgstr ""

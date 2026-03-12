@@ -1,0 +1,79 @@
+// =============================================================================
+// Admin — Sections & Form Table
+// =============================================================================
+
+@use "../variables" as *;
+
+// ── Section ───────────────────────────────────────────────────────────────────
+.spl-section {
+  background: #fff;
+  border-radius: var(--spl-radius-md);
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  &--flat {
+    background: var(--spl-bg);
+  }
+
+  &__head {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--spl-border);
+    background: $spl-neutral-200;
+  }
+
+  &__title {
+    margin: 0 0 2px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: $spl-text;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: none;
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 12px;
+    color: $spl-text-muted;
+  }
+}
+
+.spl-most-liked-posts {
+  margin: 0;
+}
+
+.spl-most-liked-posts__head {
+  border: 0;
+}
+
+// ── Form Table ────────────────────────────────────────────────────────────────
+.spl-form-table {
+  margin: 0 !important;
+
+  th {
+    width: 220px;
+    padding: 18px 20px !important;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--spl-text);
+    vertical-align: top;
+  }
+
+  td {
+    padding: 16px 20px !important;
+    vertical-align: top;
+  }
+
+  tr + tr {
+    th,
+    td {
+      border-top: 1px solid var(--spl-border);
+    }
+  }
+}
+
+// ── Notice ────────────────────────────────────────────────────────────────────
+.spl-notice {
+  margin: 0 0 16px !important;
+}

@@ -1,0 +1,10 @@
+// =============================================================================
+// Admin — CSS Custom Properties
+// Declared here so :root outputs before other rules in the compiled CSS.
+// =============================================================================
+
+@use '../variables' as *;
+
+:root {
+  @include spl-css-vars-admin;
+}

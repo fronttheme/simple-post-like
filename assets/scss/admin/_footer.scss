@@ -1,0 +1,33 @@
+@use "../variables" as *;
+
+.spl-admin__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.spl-footer__copyright {
+  margin: 0;
+  color: $spl-text-muted;
+}
+
+.spl-footer__copyright a {
+  color: $spl-color;
+  text-decoration: none;
+}
+
+.spl-footer__copyright a:hover {
+  color: $spl-text;
+}
+
+.spl-footer__logo-link {
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.spl-footer__logo-image {
+  height: 30px;
+  width: auto;
+  display: block;
+}

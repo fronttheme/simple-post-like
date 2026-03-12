@@ -1,0 +1,18 @@
+@use '../variables' as *;
+
+.wp-core-ui .button-primary.spl-button {
+  padding: 8px 24px;
+  background: $spl-color-purple;
+  border-color: $spl-color-purple;
+  border-radius: $spl-radius-sm;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $spl-color;
+    border-color: $spl-color-light;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px $spl-color-light;
+  }
+}
