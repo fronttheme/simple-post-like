@@ -11,7 +11,7 @@
 	 * Domain Path: /languages/
 	 * License: GPLv2 or later
 	 * Copyright: FrontTheme
-	 * Requires at least: 6.0
+	 * Requires at least: 6.8
 	 * Requires PHP: 8.0
 	 */
 
@@ -32,6 +32,21 @@
 
 	// Initialize the plugin.
 	Plugin::instance();
+
+	/**
+	 * Render the like button for a post.
+	 *
+	 * @param int $post_id Post ID. Defaults to current post.
+	 * @param string $style Display style override. Empty string uses global setting.
+	 *
+	 * @return string Like button HTML.
+	 */
+	function spl_like_button( int $post_id = 0, string $style = '' ): string {
+		$post_id  = $post_id > 0 ? $post_id : (int) get_the_ID();
+		$override = $style !== '' ? $style : null;
+
+		return \FrontTheme\SimplePostLike\LikeButton::instance()->get_like_button_html( $post_id, $override );
+	}
 
 	register_activation_hook( __FILE__, [ Install::instance(), 'activate' ] );
 	register_deactivation_hook( __FILE__, [ Install::instance(), 'deactivate' ] );

@@ -24,7 +24,9 @@
 			}
 
 			// Block guests if disabled in settings.
-			if ( ! is_user_logged_in() && ! Settings::instance()->get( 'allow_guests', true ) ) {
+			$guest_allowed = apply_filters( 'spl_guest_likes_enabled', Settings::instance()->get( 'allow_guests', true ) );
+
+			if ( ! is_user_logged_in() && ! $guest_allowed ) {
 				wp_send_json_error( [ 'message' => esc_html__( 'You must be logged in to like posts.', 'simple-post-like' ) ] );
 			}
 
@@ -62,10 +64,25 @@
 				}
 			}
 
+			// Fire before saving.
+			$user_id_for_hook = is_user_logged_in() ? get_current_user_id() : 0;
+			$ip_hash_for_hook = is_user_logged_in() ? '' : LikeButton::instance()->get_hashed_ip();
+
+			do_action( 'spl_before_like', $post_id, $user_id_for_hook, $ip_hash_for_hook );
+
 			// Persist all changes.
 			update_post_meta( $post_id, '_simple_post_like_count', max( 0, $like_count ) );
 			update_post_meta( $post_id, '_simple_post_like_users', $liked_users );
 			update_post_meta( $post_id, '_simple_post_like_ips', $liked_ips );
+
+			$final_count = max( 0, $like_count );
+
+			// Fire after saving — pass toggled state to determine like vs unlike.
+			if ( ! $has_liked ) {
+				do_action( 'spl_after_like', $post_id, $final_count, $user_id_for_hook );
+			} else {
+				do_action( 'spl_after_unlike', $post_id, $final_count, $user_id_for_hook );
+			}
 
 			$like_button = LikeButton::instance();
 

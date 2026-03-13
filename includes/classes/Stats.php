@@ -25,7 +25,7 @@
 		 * Register like count columns for all enabled post types.
 		 */
 		public function register_post_columns(): void {
-			$post_types = Settings::instance()->get( 'post_types', [ 'post' ] );
+			$post_types = apply_filters( 'spl_allowed_post_types', Settings::instance()->get( 'post_types', [ 'post' ] ) );
 
 			foreach ( $post_types as $pt ) {
 				add_filter( "manage_{$pt}_posts_columns", [ $this, 'add_likes_column' ] );
@@ -133,7 +133,7 @@
 		 */
 		public function get_most_liked_posts( int $limit = 10 ): array {
 			$posts = get_posts( [
-				'post_type'      => Settings::instance()->get( 'post_types', [ 'post' ] ),
+				'post_type'      => apply_filters( 'spl_allowed_post_types', Settings::instance()->get( 'post_types', [ 'post' ] ) ),
 				'post_status'    => 'publish',
 				'posts_per_page' => $limit,
 				'meta_key'       => '_simple_post_like_count',

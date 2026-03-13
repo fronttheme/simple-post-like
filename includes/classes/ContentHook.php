@@ -42,7 +42,7 @@
 			}
 
 			$post_id       = get_the_ID();
-			$enabled_types = $settings->get('post_types', ['post']);
+			$enabled_types = apply_filters( 'spl_allowed_post_types', Settings::instance()->get( 'post_types', ['post'] ) );
 			$current_type  = get_post_type($post_id);
 
 			// Only inject on post types the user has enabled.

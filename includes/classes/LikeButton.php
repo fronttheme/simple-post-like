@@ -89,7 +89,7 @@
 			$html .= $this->render_like_button( $like_icon, $button_title, $display_type );
 			$html .= '</div>';
 
-			return $html;
+			return apply_filters( 'spl_like_button_html', $html, $post_id, $display_type );
 		}
 
 		private function render_like_count_section( string $formatted_count, string $like_text, string $display_type ): string {
@@ -132,14 +132,14 @@
 		 */
 		public function format_like_count( int $number ): string {
 			if ( $number >= 1_000_000 ) {
-				return round( $number / 1_000_000, 1 ) . 'M';
+				$formatted = round( $number / 1_000_000, 1 ) . 'M';
+			} elseif ( $number >= 1_000 ) {
+				$formatted = round( $number / 1_000, 1 ) . 'K';
+			} else {
+				$formatted = (string) $number;
 			}
 
-			if ( $number >= 1_000 ) {
-				return round( $number / 1_000, 1 ) . 'K';
-			}
-
-			return (string) $number;
+			return (string) apply_filters( 'spl_like_count_format', $formatted, $number );
 		}
 
 		/**
