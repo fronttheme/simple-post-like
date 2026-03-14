@@ -9,16 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-13T00:00:44+00:00\n"
+"POT-Creation-Date: 2026-03-14T13:29:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-post-like\n"
 
 #. Plugin Name of the plugin
 #: simple-post-like.php
-#: includes/classes/Admin.php:30
 #: includes/classes/Admin.php:31
-#: includes/classes/Admin.php:113
+#: includes/classes/Admin.php:32
+#: includes/classes/Admin.php:114
 msgid "Simple Post Like"
 msgstr ""
 
@@ -29,7 +29,7 @@ msgstr ""
 
 #. Description of the plugin
 #: simple-post-like.php
-#: includes/classes/Admin.php:117
+#: includes/classes/Admin.php:118
 msgid "Add simple, intuitive reactions to your posts."
 msgstr ""
 
@@ -43,211 +43,211 @@ msgstr ""
 msgid "https://www.fronttheme.com"
 msgstr ""
 
-#: includes/classes/Admin.php:67
+#: includes/classes/Admin.php:68
 msgid "You do not have permission to do this."
 msgstr ""
 
-#: includes/classes/Admin.php:110
+#: includes/classes/Admin.php:111
 msgid "Simple Post Like Logo"
 msgstr ""
 
-#: includes/classes/Admin.php:122
+#: includes/classes/Admin.php:123
 msgid "Documentation"
 msgstr ""
 
-#: includes/classes/Admin.php:132
+#: includes/classes/Admin.php:133
 msgid "Plugin sections"
 msgstr ""
 
-#: includes/classes/Admin.php:139
+#: includes/classes/Admin.php:140
 msgid "Settings"
 msgstr ""
 
-#: includes/classes/Admin.php:147
+#: includes/classes/Admin.php:148
 msgid "Statistics"
 msgstr ""
 
-#: includes/classes/Admin.php:195
+#: includes/classes/Admin.php:196
 msgid "Settings saved successfully."
 msgstr ""
 
-#: includes/classes/Admin.php:206
-#: includes/classes/Admin.php:222
+#: includes/classes/Admin.php:207
+#: includes/classes/Admin.php:223
 msgid "Button"
 msgstr ""
 
-#: includes/classes/Admin.php:208
+#: includes/classes/Admin.php:209
 msgid "Control how the like button looks and who can use it."
 msgstr ""
 
-#: includes/classes/Admin.php:216
+#: includes/classes/Admin.php:217
 msgid "Display Style"
 msgstr ""
 
-#: includes/classes/Admin.php:223
+#: includes/classes/Admin.php:224
 msgid "Icon + label + count"
 msgstr ""
 
-#: includes/classes/Admin.php:226
+#: includes/classes/Admin.php:227
 msgid "Icon + Counter"
 msgstr ""
 
-#: includes/classes/Admin.php:227
+#: includes/classes/Admin.php:228
 msgid "Icon with number beside it"
 msgstr ""
 
-#: includes/classes/Admin.php:230
+#: includes/classes/Admin.php:231
 msgid "Icon Only"
 msgstr ""
 
-#: includes/classes/Admin.php:231
+#: includes/classes/Admin.php:232
 msgid "Just the heart icon"
 msgstr ""
 
-#: includes/classes/Admin.php:249
+#: includes/classes/Admin.php:250
 msgid "Enable on Post Types"
 msgstr ""
 
-#: includes/classes/Admin.php:263
+#: includes/classes/Admin.php:264
 msgid "Choose which post types display the like button."
 msgstr ""
 
-#: includes/classes/Admin.php:271
+#: includes/classes/Admin.php:272
 msgid "Allow Guest Likes"
 msgstr ""
 
-#: includes/classes/Admin.php:279
+#: includes/classes/Admin.php:280
 msgid "Allow non-logged-in visitors to like posts (tracked by hashed IP)."
 msgstr ""
 
-#: includes/classes/Admin.php:291
+#: includes/classes/Admin.php:292
 msgid "Auto Injection"
 msgstr ""
 
-#: includes/classes/Admin.php:293
+#: includes/classes/Admin.php:294
 msgid "Control where the like button appears automatically. Disable the master toggle to switch to shortcode-only mode."
 msgstr ""
 
-#: includes/classes/Admin.php:302
+#: includes/classes/Admin.php:303
 msgid "Enable Auto Injection"
 msgstr ""
 
-#: includes/classes/Admin.php:310
+#: includes/classes/Admin.php:311
 msgid "Automatically output the like button without editing templates."
 msgstr ""
 
-#: includes/classes/Admin.php:318
+#: includes/classes/Admin.php:319
 msgid "Single Post Position"
 msgstr ""
 
-#: includes/classes/Admin.php:323
+#: includes/classes/Admin.php:324
 msgid "After content"
 msgstr ""
 
-#: includes/classes/Admin.php:324
+#: includes/classes/Admin.php:325
 msgid "Before content"
 msgstr ""
 
-#: includes/classes/Admin.php:325
+#: includes/classes/Admin.php:326
 msgid "Before &amp; after"
 msgstr ""
 
-#: includes/classes/Admin.php:326
+#: includes/classes/Admin.php:327
 msgid "Do not inject"
 msgstr ""
 
-#: includes/classes/Admin.php:338
+#: includes/classes/Admin.php:339
 msgid "Where to place the button on individual post pages."
 msgstr ""
 
-#: includes/classes/Admin.php:346
+#: includes/classes/Admin.php:347
 msgid "Inject on Archive Pages"
 msgstr ""
 
-#: includes/classes/Admin.php:354
+#: includes/classes/Admin.php:355
 msgid "Show after each post on archive, category, tag, and blog index pages."
 msgstr ""
 
-#: includes/classes/Admin.php:366
+#: includes/classes/Admin.php:367
 msgid "Shortcode"
 msgstr ""
 
-#: includes/classes/Admin.php:367
+#: includes/classes/Admin.php:368
 msgid "Place the like button anywhere manually."
 msgstr ""
 
-#: includes/classes/Admin.php:372
+#: includes/classes/Admin.php:373
 msgid "Current post, default style"
 msgstr ""
 
-#: includes/classes/Admin.php:376
+#: includes/classes/Admin.php:377
 msgid "Specific post by ID"
 msgstr ""
 
-#: includes/classes/Admin.php:380
+#: includes/classes/Admin.php:381
 msgid "Override display style"
 msgstr ""
 
-#: includes/classes/Admin.php:388
+#: includes/classes/Admin.php:389
 msgid "Save Settings"
 msgstr ""
 
-#: includes/classes/Admin.php:422
+#: includes/classes/Admin.php:423
 msgid "Total Likes"
 msgstr ""
 
-#: includes/classes/Admin.php:430
+#: includes/classes/Admin.php:431
 msgid "Posts with Likes"
 msgstr ""
 
-#: includes/classes/Admin.php:442
+#: includes/classes/Admin.php:443
 msgid "Most Liked Post"
 msgstr ""
 
-#: includes/classes/Admin.php:451
+#: includes/classes/Admin.php:452
 msgid "Most Liked Posts"
 msgstr ""
 
-#: includes/classes/Admin.php:452
+#: includes/classes/Admin.php:453
 msgid "Top 10 posts ranked by like count."
 msgstr ""
 
-#: includes/classes/Admin.php:458
+#: includes/classes/Admin.php:459
 msgid "No likes yet. Share your posts to get started!"
 msgstr ""
 
-#: includes/classes/Admin.php:465
+#: includes/classes/Admin.php:466
 msgid "#"
 msgstr ""
 
-#: includes/classes/Admin.php:466
+#: includes/classes/Admin.php:467
 msgid "Post Title"
 msgstr ""
 
-#: includes/classes/Admin.php:467
+#: includes/classes/Admin.php:468
 msgid "Type"
 msgstr ""
 
-#: includes/classes/Admin.php:468
+#: includes/classes/Admin.php:469
 #: includes/classes/LikeButton.php:32
 #: includes/classes/Stats.php:53
 #: includes/classes/Stats.php:54
 msgid "Likes"
 msgstr ""
 
-#: includes/classes/Admin.php:469
+#: includes/classes/Admin.php:470
 msgid "Actions"
 msgstr ""
 
-#: includes/classes/Admin.php:489
+#: includes/classes/Admin.php:490
 msgid "(no title)"
 msgstr ""
 
-#: includes/classes/Admin.php:506
+#: includes/classes/Admin.php:507
 msgid "View post"
 msgstr ""
 
-#: includes/classes/Admin.php:510
+#: includes/classes/Admin.php:511
 msgid "Edit post"
 msgstr ""
 

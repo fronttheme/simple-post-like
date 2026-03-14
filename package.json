@@ -10,7 +10,7 @@
     "dev": "sass assets/scss:assets/css --watch --style=expanded --source-map",
     "build": "npm run clean && sass assets/scss:assets/css --style=compressed --no-source-map",
     "pot": "wp i18n make-pot . languages/simple-post-like.pot --domain=simple-post-like",
-    "package": "npm run build && npm run pot && composer install --no-dev --optimize-autoloader && rm -rf ../simple-post-like-packaged && rm -f ../simple-post-like.zip && rsync -av --exclude-from='.distignore' . ../simple-post-like-packaged && cd .. && zip -r simple-post-like.zip simple-post-like-packaged && echo '✅ simple-post-like.zip ready for release!'"
+    "package": "npm run build && npm run pot && rm -rf package/simple-post-like && rm -f package/simple-post-like.zip && mkdir -p package/simple-post-like && rsync -av --exclude-from='.distignore' . package/simple-post-like && cd package && zip -r simple-post-like.zip simple-post-like && rm -rf simple-post-like && echo '✅ package/simple-post-like.zip ready!'"
   },
   "keywords": [
     "wordpress",

@@ -12,6 +12,7 @@ assets/css/*.map
 # Release artifacts
 *.zip
 *-packaged/
+package/
 
 # OS junk
 .DS_Store
