@@ -5,12 +5,17 @@
 src/
 assets/scss/
 
+# Composer (lock file only - vendor MUST be included!)
+/composer.lock
+# /vendor/  ← DO NOT EXCLUDE! (so it's commented out)
+
 # Build tooling
 node_modules/
 package/
 package.json
 package-lock.json
 vite.config.js
+webpack.config.js
 
 # Git files
 .git/

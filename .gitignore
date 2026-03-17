@@ -1,20 +1,30 @@
-# Dependencies
+# Node
 node_modules/
-vendor/
+/package-lock.json
+
+# Author Kit
 README/
+
+# Composer - DO NOT commit to git
+/composer.lock
+/vendor/
 
 # Compiled CSS (committed to git so users can install without npm)
 # assets/css/      ← intentionally NOT ignored
 
-# Source maps (dev only)
+# Build outputs - ignore source maps
 assets/css/*.map
+/assets/js/*.map
+/build/
+/dist/
 
 # Release artifacts
 *.zip
 *-packaged/
 package/
 
-# OS junk
+# Environment
+.env
 .DS_Store
 Thumbs.db
 *.log

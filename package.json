@@ -9,8 +9,10 @@
     "clean": "rm -f assets/css/*.map",
     "dev": "sass assets/scss:assets/css --watch --style=expanded --source-map",
     "build": "npm run clean && sass assets/scss:assets/css --style=compressed --no-source-map",
+    "composer:dev": "composer dump-autoload",
+    "composer:prod": "composer dump-autoload -o",
     "pot": "wp i18n make-pot . languages/simple-post-like.pot --domain=simple-post-like",
-    "package": "npm run build && npm run pot && rm -rf package/simple-post-like && rm -f package/simple-post-like.zip && mkdir -p package/simple-post-like && rsync -av --exclude-from='.distignore' . package/simple-post-like && cd package && zip -r simple-post-like.zip simple-post-like && rm -rf simple-post-like && echo '✅ package/simple-post-like.zip ready!'"
+    "package": "composer dump-autoload -o && npm run build && npm run pot && rm -rf package/simple-post-like && rm -f package/simple-post-like.zip && mkdir -p package/simple-post-like && rsync -av --exclude-from='.distignore' . package/simple-post-like && cd package && zip -r simple-post-like.zip simple-post-like && rm -rf simple-post-like && echo '✅ package/simple-post-like.zip ready!'"
   },
   "keywords": [
     "wordpress",
