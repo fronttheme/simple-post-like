@@ -2,9 +2,9 @@
 Contributors: farukahmed
 Tags: like, post like, reactions, like button, post reactions
 Requires at least: 6.8
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,35 @@ the button entirely from your theme without touching plugin files:
   --spl-btn-radius: 4px;
 }
 ```
+
+**For theme and plugin developers**
+
+If your theme prints the like button itself, declare support and the plugin will skip automatic insertion on single posts and archives:
+
+```php
+add_action( 'after_setup_theme', function () {
+	add_theme_support( 'simple-post-like' );
+} );
+```
+
+To decide case by case, use the `simple_post_like_auto_inject` filter. It receives the current decision, the context (`single` or `archive`) and the post ID. The plugin's own settings still apply first: the filter cannot turn insertion on when Auto Injection is switched off in Settings.
+
+```php
+add_filter( 'simple_post_like_auto_inject', function ( $enabled, $context, $post_id ) {
+	return $context === 'archive' ? false : $enabled;
+}, 10, 3 );
+```
+
+To print the button in a template:
+
+```php
+if ( function_exists( 'simple_post_like_button' ) ) {
+	echo simple_post_like_button();                   // Current post, saved style.
+	echo simple_post_like_button( 123, 'icon_only' ); // Specific post and style.
+}
+```
+
+Or use the shortcode: `[simple_post_like post_id="123" style="icon_counter"]`. Available styles: `button_default`, `icon_counter`, `icon_only`.
 
 == Installation ==
 
@@ -110,6 +139,29 @@ https://github.com/fronttheme/simple-post-like/issues
 
 == Changelog ==
 
+= 1.0.1 =
+* Added: themes can turn off automatic insertion with `add_theme_support( 'simple-post-like' )`
+* Added: `simple_post_like_auto_inject` filter
+* Added: `simple_post_like_guest_ip` filter for sites behind a proxy or CDN
+* Added: plugin data is removed when the plugin is deleted
+* Changed: template function renamed to `simple_post_like_button()` (was `spl_like_button()`)
+* Changed: all hooks now use the `simple_post_like_` prefix
+* Changed: inline SVG heart replaces Font Awesome, so no external requests
+* Changed: frontend script loads only on pages that show a button
+* Changed: the settings page no longer hides admin notices from WordPress and other plugins
+* Fixed: like buttons added after page load (load more, infinite scroll) now respond to clicks
+* Fixed: sorting the Posts list by Likes no longer hides posts without likes
+* Fixed: an unknown shortcode `style` falls back to the saved setting
+* Fixed: counts near one million showed as "1000K"
+* Fixed: the "Settings saved" notice appeared for other admins
+* Fixed: a missing vendor folder shows an admin notice instead of a fatal error
+* Fixed: escaping and input sanitization flagged by Plugin Check
+* Fixed: the shortcode now uses the saved Display Style when no style is given
+* Fixed: the stored like count could drift from the actual likes
+* Fixed: draft and private posts could be liked by post ID
+* Fixed: the like label stayed plural ("1 Likes") until the page was reloaded
+* Fixed: admin notices from WordPress and other plugins appeared inside the settings page header
+
 = 1.0.0 =
 * Initial public release
 * Three display styles: button, icon + counter, icon only
@@ -123,6 +175,9 @@ https://github.com/fronttheme/simple-post-like/issues
 * PHP 8.0+ with PSR-4 autoloading via Composer
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Renames the template function to simple_post_like_button() and all hooks to the simple_post_like_ prefix. Update custom theme code that uses the old names.
 
 = 1.0.0 =
 Initial release. No upgrade steps required.

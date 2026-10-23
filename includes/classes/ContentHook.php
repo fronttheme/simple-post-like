@@ -1,75 +1,98 @@
 <?php
 
-	namespace FrontTheme\SimplePostLike;
+namespace FrontTheme\SimplePostLike;
 
-	use FrontTheme\SimplePostLike\Traits\Singleton;
+use FrontTheme\SimplePostLike\Traits\Singleton;
 
-	defined('ABSPATH') || exit;
+defined('ABSPATH') || exit;
 
-	/**
-	 * Automatically injects the like button into post content
-	 * based on the placement settings configured in the admin.
-	 *
-	 * Placement logic:
-	 *  - auto_inject = false  → nothing, shortcode-only mode.
-	 *  - inject_single        → 'before' | 'after' | 'both' | 'none' on singular views.
-	 *  - inject_archive       → appends after content on archive/loop pages.
-	 */
-	class ContentHook {
-		use Singleton;
+/**
+ * Inserts the like button into post content based on the plugin settings.
+ */
+class ContentHook {
+  use Singleton;
 
-		protected function init(): void {
-			add_filter('the_content', [$this, 'inject']);
-		}
+  protected function init(): void {
+    add_filter('the_content', [$this, 'inject']);
+  }
 
-		/**
-		 * Filter callback — injects the button based on current context and settings.
-		 *
-		 * @param string $content Original post content.
-		 * @return string Modified content.
-		 */
-		public function inject(string $content): string {
-			// Must be inside the main loop.
-			if (!in_the_loop() || !is_main_query()) {
-				return $content;
-			}
+  /**
+   * Add the like button before and/or after the post content.
+   *
+   * @param string $content Post content.
+   *
+   * @return string Post content with the like button.
+   */
+  public function inject(string $content): string {
+    $post_id = (int)get_the_ID();
+    $context = is_singular() ? 'single' : 'archive';
 
-			$settings = Settings::instance();
+    if (!$this->should_auto_inject($context, $post_id)) {
+      return $content;
+    }
 
-			// Master toggle — bail immediately if auto inject is disabled.
-			if (!$settings->get('auto_inject', true)) {
-				return $content;
-			}
+    $button = '<div class="spl-auto-inject">'
+      . LikeButton::instance()->get_like_button_html($post_id)
+      . '</div>';
 
-			$post_id       = get_the_ID();
-			$enabled_types = apply_filters( 'spl_allowed_post_types', Settings::instance()->get( 'post_types', ['post'] ) );
-			$current_type  = get_post_type($post_id);
+    if ($context === 'archive') {
+      return $content . $button;
+    }
 
-			// Only inject on post types the user has enabled.
-			if (!in_array($current_type, $enabled_types, true)) {
-				return $content;
-			}
+    return match (Settings::instance()->get('inject_single', 'after')) {
+      'before' => $button . $content,
+      'both' => $button . $content . $button,
+      default => $content . $button,
+    };
+  }
 
-			$button = '<div class="spl-auto-inject">'
-			          . LikeButton::instance()->get_like_button_html($post_id)
-			          . '</div>';
+  /**
+   * Decide whether the like button is inserted automatically.
+   *
+   * @param string $context 'single' or 'archive'.
+   * @param int $post_id Post ID.
+   *
+   * @return bool True when the button should be inserted.
+   */
+  public function should_auto_inject(string $context, int $post_id): bool {
+    if ($post_id <= 0 || !in_the_loop() || !is_main_query()) {
+      return false;
+    }
 
-			// Archive / loop context (blog page, category, tag, search, etc.).
-			if (!is_singular()) {
-				if ($settings->get('inject_archive', true)) {
-					return $content . $button;
-				}
-				return $content;
-			}
+    $settings = Settings::instance();
 
-			// Singular context — use inject_single placement.
-			$placement = $settings->get('inject_single', 'after');
+    if (!$settings->get('auto_inject', true)) {
+      return false;
+    }
 
-			return match ($placement) {
-				'before' => $button . $content,
-				'after'  => $content . $button,
-				'both'   => $button . $content . $button,
-				default  => $content, // 'none' or any unexpected value.
-			};
-		}
-	}
+    $post_types = apply_filters('simple_post_like_allowed_post_types', $settings->get('post_types', ['post']));
+
+    if (!in_array(get_post_type($post_id), $post_types, true)) {
+      return false;
+    }
+
+    if ($context === 'archive' && !$settings->get('inject_archive', true)) {
+      return false;
+    }
+
+    if ($context === 'single' && $settings->get('inject_single', 'after') === 'none') {
+      return false;
+    }
+
+    /**
+     * Filters whether the like button is inserted automatically.
+     *
+     * @param bool $enabled True unless the theme declares support for simple-post-like.
+     * @param string $context 'single' or 'archive'.
+     * @param int $post_id Post ID.
+     */
+    return (bool)apply_filters('simple_post_like_auto_inject', !$this->theme_places_button(), $context, $post_id);
+  }
+
+  /**
+   * Check whether the active theme prints the like button itself.
+   */
+  public function theme_places_button(): bool {
+    return current_theme_supports('simple-post-like');
+  }
+}

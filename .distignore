@@ -1,10 +1,6 @@
 # Simple Post Like Distribution Ignore
 # Files and folders excluded from the release ZIP (npm run package)
 
-# Source files
-src/
-assets/scss/
-
 # Composer (lock file only - vendor MUST be included!)
 /composer.lock
 # /vendor/  ← DO NOT EXCLUDE! (so it's commented out)
@@ -14,8 +10,7 @@ node_modules/
 package/
 package.json
 package-lock.json
-vite.config.js
-webpack.config.js
+*.zip
 
 # Git files
 .git/
@@ -28,7 +23,6 @@ webpack.config.js
 
 # Development & IDE files
 .DS_Store
-*.DS_Store
 .idea/
 .vscode/
 *.log

@@ -3,7 +3,7 @@
   <h1>Simple Post Like</h1>
   <p>Add simple, intuitive reactions to your posts.</p>
 
-![Version](https://img.shields.io/badge/version-1.0.0-e03e52?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.1-e03e52?style=flat-square)
 ![WordPress](https://img.shields.io/badge/WordPress-6.8%2B-3858e9?style=flat-square&logo=wordpress&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-7a86b8?style=flat-square&logo=php&logoColor=white)
 ![License](https://img.shields.io/badge/license-GPL--2.0--or--later-green?style=flat-square)

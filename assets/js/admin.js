@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const syncRadioGroup = (changedInput) => {
     // Find all sibling radios with the same name.
-    const name = changedInput.name;
+    const name   = changedInput.name;
     const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
 
     radios.forEach((radio) => {
@@ -36,18 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Notice auto dismissible
-  const notices = document.querySelectorAll('.spl-notice');
-
-  notices.forEach(function (notice) {
-    setTimeout(function () {
+  // Fade out the "Settings saved" notice after 3 seconds.
+  document.querySelectorAll('.spl-notice.notice-success').forEach((notice) => {
+    setTimeout(() => {
       notice.style.transition = 'opacity 0.5s ease';
-      notice.style.opacity = '0';
+      notice.style.opacity    = '0';
 
-      setTimeout(function () {
-        notice.remove();
-      }, 500);
-    }, 3000); // 3 seconds
+      setTimeout(() => notice.remove(), 500);
+    }, 3000);
   });
 
 });

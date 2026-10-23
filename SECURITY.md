@@ -4,10 +4,10 @@
 
 Only the latest release of Simple Post Like receives security fixes.
 
-| Version | Supported |
-|---|---|
-| 1.0.x (latest) | ✅ |
-| < 1.0.0 | ❌ |
+| Version        | Supported |
+|----------------|---|
+| 1.0.1 (latest) | ✅ |
+| < 1.0.0        | ❌ |
 
 ---
 

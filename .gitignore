@@ -1,6 +1,5 @@
 # Node
 node_modules/
-/package-lock.json
 
 # Author Kit
 README/
@@ -9,14 +8,8 @@ README/
 /composer.lock
 /vendor/
 
-# Compiled CSS (committed to git so users can install without npm)
-# assets/css/      ← intentionally NOT ignored
-
 # Build outputs - ignore source maps
 assets/css/*.map
-/assets/js/*.map
-/build/
-/dist/
 
 # Release artifacts
 *.zip

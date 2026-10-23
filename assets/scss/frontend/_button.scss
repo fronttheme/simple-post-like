@@ -2,9 +2,6 @@
 // Frontend — Button
 // =============================================================================
 
-@use '../variables' as *;
-@use 'sass:color';
-
 .simple-post-like-button {
   display: inline-flex;
   align-items: center;
@@ -40,7 +37,7 @@
       color: var(--spl-color);
       background: var(--spl-btn-bg-hover);
       border-color: var(--spl-color);
-      box-shadow: 0 2px 8px rgba($spl-color, 0.12);
+      box-shadow: 0 2px 8px color-mix(in srgb, var(--spl-color) 12%, transparent);
     }
 
     &:focus-visible {
@@ -60,16 +57,14 @@
   }
 
   // ── Liked State ────────────────────────────────────────────────────────────
-  &.post-liked {
-    .like-btn {
-      color: var(--spl-btn-text-liked);
-      background: var(--spl-btn-bg-liked);
-      border-color: var(--spl-btn-border-liked);
+  &.post-liked .like-btn {
+    color: var(--spl-btn-text-liked);
+    background: var(--spl-btn-bg-liked);
+    border-color: var(--spl-btn-border-liked);
 
-      &:hover {
-        background: color.adjust($spl-color-light, $lightness: -4%);
-        box-shadow: 0 2px 8px rgba($spl-color, 0.15);
-      }
+    &:hover {
+      background: color-mix(in srgb, var(--spl-btn-bg-liked), #000 4%);
+      box-shadow: 0 2px 8px color-mix(in srgb, var(--spl-color) 15%, transparent);
     }
   }
 
@@ -81,18 +76,22 @@
     pointer-events: none;
   }
 
-  .like-btn i {
+  .like-icon {
     font-size: 14px;
-    line-height: 1;
-    transition: transform var(--spl-transition);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    transition: fill var(--spl-transition),
+    transform var(--spl-transition);
   }
 
-  &.post-liked .like-btn i {
-    color: var(--spl-color);
+  &.post-liked .like-icon {
+    fill: currentColor;
   }
 
   // ── Pulse Animation (AJAX in-flight) ───────────────────────────────────────
-  .like-btn.spl-animating i {
+  .like-btn.spl-animating .like-icon {
     animation: spl-pulse 0.55s ease-in-out infinite;
   }
 }

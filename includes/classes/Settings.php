@@ -1,136 +1,139 @@
 <?php
 
-	namespace FrontTheme\SimplePostLike;
+namespace FrontTheme\SimplePostLike;
 
-	use FrontTheme\SimplePostLike\Traits\Singleton;
+use FrontTheme\SimplePostLike\Traits\Singleton;
 
-	defined('ABSPATH') || exit;
+defined('ABSPATH') || exit;
 
-	/**
-	 * Manages plugin settings stored in WordPress options.
-	 * Replaces all theme-specific option dependencies.
-	 */
-	class Settings {
-		use Singleton;
+/**
+ * Loads, validates and saves the plugin settings.
+ */
+class Settings {
+  use Singleton;
 
-		/**
-		 * The option key used to store all plugin settings.
-		 */
-		const OPTION_KEY = 'simple_post_like_settings';
+  /**
+   * The option key used to store all plugin settings.
+   */
+  const OPTION_KEY = 'simple_post_like_settings';
 
-		/**
-		 * Default settings values.
-		 */
-		const DEFAULTS = [
-			'display_type'   => 'button_default', // button_default | icon_only | icon_counter
-			'post_types'     => ['post'],          // Post types where the like button is enabled.
-			'allow_guests'   => true,              // Allow non-logged-in users to like posts.
+  /**
+   * Allowed values for the display_type setting.
+   */
+  const DISPLAY_TYPES = ['button_default', 'icon_counter', 'icon_only'];
 
-			// Auto injection placement.
-			'auto_inject'    => true,             // Master toggle. false = shortcode-only mode.
-			'inject_single'  => 'after',          // Singular view: 'before' | 'after' | 'both' | 'none'.
-			'inject_archive' => true,             // Also inject in archive/loop post items.
-		];
+  /**
+   * Default settings values.
+   */
+  const DEFAULTS = [
+    'display_type'   => 'button_default', // button_default | icon_only | icon_counter
+    'post_types'     => ['post'],          // Post types where the like button is enabled.
+    'allow_guests'   => true,              // Allow non-logged-in users to like posts.
 
-		/**
-		 * Cached settings to avoid repeated DB reads.
-		 */
-		private array $settings = [];
+    // Auto injection placement.
+    'auto_inject'    => true,             // Master toggle. false = shortcode-only mode.
+    'inject_single'  => 'after',          // Singular view: 'before' | 'after' | 'both' | 'none'.
+    'inject_archive' => true,             // Also inject in archive/loop post items.
+  ];
 
-		protected function init(): void {
-			$this->settings = $this->load();
-		}
+  /**
+   * Cached settings to avoid repeated DB reads.
+   */
+  private array $settings = [];
 
-		/**
-		 * Load settings from the database, merged with defaults.
-		 */
-		private function load(): array {
-			$saved = get_option(self::OPTION_KEY, []);
-			return wp_parse_args($saved, self::DEFAULTS);
-		}
+  protected function init(): void {
+    $this->settings = $this->load();
+  }
 
-		/**
-		 * Get a single setting value by key.
-		 *
-		 * @param string $key     The setting key.
-		 * @param mixed  $default Fallback if key doesn't exist.
-		 * @return mixed
-		 */
-		public function get(string $key, mixed $default = null): mixed {
-			return $this->settings[$key] ?? $default;
-		}
+  /**
+   * Load settings from the database, merged with defaults.
+   */
+  private function load(): array {
+    $saved = get_option(self::OPTION_KEY, []);
+    return wp_parse_args($saved, self::DEFAULTS);
+  }
 
-		/**
-		 * Get all settings.
-		 */
-		public function all(): array {
-			return $this->settings;
-		}
+  /**
+   * Get a single setting value by key.
+   *
+   * @param string $key The setting key.
+   * @param mixed $default Fallback if key doesn't exist.
+   * @return mixed
+   */
+  public function get(string $key, mixed $default = null): mixed {
+    return $this->settings[$key] ?? $default;
+  }
 
-		/**
-		 * Save settings to the database.
-		 *
-		 * @param array $data Raw input data (will be sanitized).
-		 */
-		public function save(array $data): bool {
-			$sanitized = $this->sanitize($data);
-			$saved = update_option(self::OPTION_KEY, $sanitized);
+  /**
+   * Get all settings.
+   */
+  public function all(): array {
+    return $this->settings;
+  }
 
-			if ($saved) {
-				$this->settings = wp_parse_args($sanitized, self::DEFAULTS);
-			}
+  /**
+   * Save settings to the database.
+   *
+   * @param array $data Raw input data (will be sanitized).
+   */
+  public function save(array $data): bool {
+    $sanitized = $this->sanitize($data);
+    $saved     = update_option(self::OPTION_KEY, $sanitized);
 
-			return $saved;
-		}
+    if ($saved) {
+      $this->settings = wp_parse_args($sanitized, self::DEFAULTS);
+    }
 
-		/**
-		 * Sanitize raw settings input.
-		 *
-		 * @param array $data Raw input.
-		 * @return array Sanitized settings.
-		 */
-		private function sanitize(array $data): array {
-			$allowed_display_types = ['button_default', 'icon_only', 'icon_counter'];
+    return $saved;
+  }
 
-			$display_type = sanitize_text_field($data['display_type'] ?? '');
-			if (!in_array($display_type, $allowed_display_types, true)) {
-				$display_type = self::DEFAULTS['display_type'];
-			}
+  /**
+   * Sanitize raw settings input.
+   *
+   * @param array $data Raw input.
+   * @return array Sanitized settings.
+   */
+  private function sanitize(array $data): array {
 
-			$post_types = [];
-			if (!empty($data['post_types']) && is_array($data['post_types'])) {
-				foreach ($data['post_types'] as $pt) {
-					$sanitized_pt = sanitize_key($pt);
-					if (post_type_exists($sanitized_pt)) {
-						$post_types[] = $sanitized_pt;
-					}
-				}
-			}
-			if (empty($post_types)) {
-				$post_types = self::DEFAULTS['post_types'];
-			}
+    $display_type = sanitize_text_field($data['display_type'] ?? '');
+    if (!in_array($display_type, self::DISPLAY_TYPES, true)) {
+      $display_type = self::DEFAULTS['display_type'];
+    }
 
-			$allowed_inject_single = ['before', 'after', 'both', 'none'];
-			$inject_single = sanitize_text_field($data['inject_single'] ?? '');
-			if (!in_array($inject_single, $allowed_inject_single, true)) {
-				$inject_single = self::DEFAULTS['inject_single'];
-			}
+    $post_types = [];
+    if (!empty($data['post_types']) && is_array($data['post_types'])) {
+      foreach ($data['post_types'] as $pt) {
+        $sanitized_pt = sanitize_key($pt);
+        if (post_type_exists($sanitized_pt)) {
+          $post_types[] = $sanitized_pt;
+        }
+      }
+    }
+    if (empty($post_types)) {
+      $post_types = self::DEFAULTS['post_types'];
+    }
 
-			return [
-				'display_type'   => $display_type,
-				'post_types'     => $post_types,
-				'allow_guests'   => !empty($data['allow_guests']),
-				'auto_inject'    => !empty($data['auto_inject']),
-				'inject_single'  => $inject_single,
-				'inject_archive' => !empty($data['inject_archive']),
-			];
-		}
+    $allowed_inject_single = ['before', 'after', 'both', 'none'];
+    $inject_single         = sanitize_text_field($data['inject_single'] ?? '');
+    if (!in_array($inject_single, $allowed_inject_single, true)) {
+      $inject_single = self::DEFAULTS['inject_single'];
+    }
 
-		/**
-		 * Delete all plugin settings from the database.
-		 */
-		public function delete(): void {
-			delete_option(self::OPTION_KEY);
-			$this->settings = self::DEFAULTS;
-		}
-	}
+    return [
+      'display_type'   => $display_type,
+      'post_types'     => $post_types,
+      'allow_guests'   => !empty($data['allow_guests']),
+      'auto_inject'    => !empty($data['auto_inject']),
+      'inject_single'  => $inject_single,
+      'inject_archive' => !empty($data['inject_archive']),
+    ];
+  }
+
+  /**
+   * Delete all plugin settings from the database.
+   */
+  public function delete(): void {
+    delete_option(self::OPTION_KEY);
+    $this->settings = self::DEFAULTS;
+  }
+}

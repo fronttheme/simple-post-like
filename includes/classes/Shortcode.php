@@ -15,20 +15,11 @@ class Shortcode {
 
   public function shortcode_handler($atts): string {
     $atts = shortcode_atts([
-      'post_id' => get_the_ID(),
-      'style'   => 'button_default', // Default style
+      'post_id' => 0,
+      'style'   => '',
     ], $atts, 'simple_post_like');
 
-    $post_id = intval($atts['post_id']);
-    $style = sanitize_text_field($atts['style']);
-
-    // Validation: Check if post exists
-    if (!$post_id || !get_post($post_id)) {
-      return '';
-    }
-
-    // Pass the style parameter to the like button
-    return LikeButton::instance()->get_like_button_html($post_id, $style);
+    return simple_post_like_button(absint($atts['post_id']), sanitize_key($atts['style']));
   }
 
 }
